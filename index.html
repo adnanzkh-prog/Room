@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Rent Pro - AI-Powered Property Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .voice-wave { animation: wave 1.5s ease-in-out infinite; }
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+        .slide-in { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .pulse-ring { animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .typing-dot { animation: typing 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- LANDING PAGE -->
+    <div id="landing" class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="fixed w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight">Room Rent Pro</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-8">
+                        <a href="#features" class="text-slate-600 hover:text-indigo-600 font-medium transition">Features</a>
+                        <a href="#pricing" class="text-slate-600 hover:text-indigo-600 font-medium transition">Pricing</a>
+                        <a href="#contact" class="text-slate-600 hover:text-indigo-600 font-medium transition">Contact</a>
+                        <button onclick="showAuth('login')" class="text-indigo-600 font-semibold hover:text-indigo-700">Sign In</button>
+                        <button onclick="showOnboarding()" class="gradient-bg text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition">
+                            Start Free Trial
+                        </button>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden fixed inset-0 bg-white z-40 pt-20 px-6">
+            <div class="flex flex-col gap-4">
+                <a href="#features" onclick="toggleMobileMenu()" class="text-lg font-medium py-3 border-b">Features</a>
+                <a href="#pricing" onclick="toggleMobileMenu()" class="text-lg font-medium py-3 border-b">Pricing</a>
+                <button onclick="showAuth('login'); toggleMobileMenu()" class="text-lg font-medium py-3 border-b text-indigo-600">Sign In</button>
+                <button onclick="showOnboarding(); toggleMobileMenu()" class="gradient-bg text-white py-3 rounded-xl font-semibold mt-4">Start Free Trial</button>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold">
+                        <span class="w-2 h-2 bg-indigo-600 rounded-full animate-pulse"></span>
+                        AI-Powered for Pakistan & Global Markets
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+                        Manage Your <span class="gradient-text">Rooms</span> Like a Pro
+                    </h1>
+                    <p class="text-xl text-slate-600 leading-relaxed">
+                        The complete AI hospitality management system for hostels, guest houses, and Airbnb-style rentals. Voice-enabled, effortless operations, and 7-day free trial.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showOnboarding()" class="gradient-bg text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:scale-105 transition flex items-center justify-center gap-2">
+                            <i class="fas fa-rocket"></i>
+                            Start 7-Day Free Trial
+                        </button>
+                        <button onclick="showDemo()" class="bg-white text-slate-700 border-2 border-slate-200 px-8 py-4 rounded-full font-bold text-lg hover:border-indigo-600 hover:text-indigo-600 transition flex items-center justify-center gap-2">
+                            <i class="fas fa-play-circle"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-slate-500">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white text-xs font-bold">AK</div>
+                            <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-bold">SR</div>
+                            <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white text-xs font-bold">+5</div>
+                        </div>
+                        <p>Trusted by 50+ properties in Pakistan</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 gradient-bg rounded-3xl transform rotate-3 opacity-20"></div>
+                    <div class="relative bg-white rounded-3xl shadow-2xl p-6 border border-slate-100">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Rixi AI Assistant</p>
+                                    <p class="text-xs text-green-600 flex items-center gap-1">
+                                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                        Online & Listening
+                                    </p>
+                                </div>
+                            </div>
+                            <button onclick="toggleVoice()" id="voiceBtn" class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-indigo-100 hover:text-indigo-600 transition relative">
+                                <i class="fas fa-microphone"></i>
+                                <div id="voiceRing" class="absolute inset-0 rounded-full border-2 border-indigo-600 hidden"></div>
+                            </button>
+                        </div>
+                        <div id="heroChat" class="space-y-3 mb-4 h-64 overflow-y-auto">
+                            <div class="bg-slate-100 rounded-2xl rounded-tl-none p-4 max-w-[80%]">
+                                <p class="text-sm">Assalam-o-Alaikum! I'm Rixi, your AI property manager. I can handle bookings in English, Urdu, and Roman Urdu. How may I assist you today?</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="heroInput" placeholder="Try: 'Kya aaj room available hai?'" 
+                                class="flex-1 bg-slate-100 rounded-full px-6 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                onkeypress="if(event.key==='Enter')sendHeroMessage()">
+                            <button onclick="sendHeroMessage()" class="w-12 h-12 gradient-bg rounded-full text-white flex items-center justify-center hover:shadow-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section id="features" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything You Need to Run Your Property</h2>
+                    <p class="text-xl text-slate-600">From check-in to check-out, we've got you covered</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition border border-slate-100">
+                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-microphone-lines"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Voice AI Agent</h3>
+                        <p class="text-slate-600">Rixi handles guest queries, bookings, and complaints via voice or text in multiple languages.</p>
+                    </div>
+                    <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition border border-slate-100">
+                        <div class="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Local Payments</h3>
+                        <p class="text-slate-600">Integrated JazzCash, EasyPaisa, and bank transfers. Automatic reconciliation and receipts.</p>
+                    </div>
+                    <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition border border-slate-100">
+                        <div class="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Smart Analytics</h3>
+                        <p class="text-slate-600">Real-time occupancy rates, revenue forecasting, and AI-powered pricing recommendations.</p>
+                    </div>
+                    <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition border border-slate-100">
+                        <div class="w-14 h-14 bg-purple-500 rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Channel Manager</h3>
+                        <p class="text-slate-600">Sync with Airbnb, Booking.com, and local platforms. No more double bookings.</p>
+                    </div>
+                    <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition border border-slate-100">
+                        <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-mobile-screen"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Mobile App</h3>
+                        <p class="text-slate-600">Manage your property from anywhere. iOS and Android apps with push notifications.</p>
+                    </div>
+                    <div class="group p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition border border-slate-100">
+                        <div class="w-14 h-14 bg-pink-500 rounded-xl flex items-center justify-center text-white text-2xl mb-6 group-hover:scale-110 transition">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Secure & Compliant</h3>
+                        <p class="text-slate-600">NADRA verification integration, digital check-ins, and automated guest registration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                    <p class="text-xl text-slate-600">Start free for 7 days. No credit card required.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-indigo-300 transition">
+                        <h3 class="text-xl font-bold mb-2">Starter</h3>
+                        <p class="text-slate-500 mb-6">For small hostels & guest houses</p>
+                        <div class="text-4xl font-bold mb-6">Rs. 5,000<span class="text-lg text-slate-500 font-normal">/month</span></div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Up to 10 rooms</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Basic AI assistant</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> JazzCash/EasyPaisa</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Email support</li>
+                        </ul>
+                        <button onclick="showOnboarding('starter')" class="w-full py-3 rounded-xl border-2 border-indigo-600 text-indigo-600 font-semibold hover:bg-indigo-50 transition">Start Trial</button>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 border-2 border-indigo-600 shadow-xl relative transform scale-105">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                            Most Popular
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Professional</h3>
+                        <p class="text-slate-500 mb-6">For growing properties</p>
+                        <div class="text-4xl font-bold mb-6 text-indigo-600">Rs. 12,000<span class="text-lg text-slate-500 font-normal">/month</span></div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Up to 50 rooms</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Advanced Voice AI</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Channel manager</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Analytics dashboard</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Priority support</li>
+                        </ul>
+                        <button onclick="showOnboarding('professional')" class="w-full py-3 rounded-xl gradient-bg text-white font-semibold hover:shadow-lg transition">Start Trial</button>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-indigo-300 transition">
+                        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                        <p class="text-slate-500 mb-6">For hotel chains & large hostels</p>
+                        <div class="text-4xl font-bold mb-6">Custom</div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Unlimited rooms</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Custom AI training</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> API access</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> Dedicated manager</li>
+                            <li class="flex items-center gap-2 text-sm"><i class="fas fa-check text-green-500"></i> SLA guarantee</li>
+                        </ul>
+                        <button onclick="showContact()" class="w-full py-3 rounded-xl border-2 border-slate-300 text-slate-700 font-semibold hover:border-indigo-600 hover:text-indigo-600 transition">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+                <p class="text-xl text-slate-600 mb-12">Ready to transform your property management? We're here to help.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="p-6 rounded-2xl bg-slate-50">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Call Us</h3>
+                        <p class="text-slate-600">+92 321 411 4969</p>
+                        <p class="text-xs text-slate-500 mt-1">Mon-Sat, 9AM-6PM PKT</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Email Us</h3>
+                        <p class="text-slate-600">support@roomrentpro.pk</p>
+                        <p class="text-xs text-slate-500 mt-1">24/7 Support</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50">
+                        <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Visit Us</h3>
+                        <p class="text-slate-600">IdeaCentricity HQ</p>
+                        <p class="text-xs text-slate-500 mt-1">Lahore, Pakistan</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-6">
+                    <a href="https://www.facebook.com/Ideacentricity/" target="_blank" class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl hover:scale-110 transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/ideacentricity---get-rixi" target="_blank" class="w-12 h-12 rounded-full bg-blue-700 text-white flex items-center justify-center text-xl hover:scale-110 transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://wa.me/923214114969" target="_blank" class="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center text-xl hover:scale-110 transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center text-white font-bold">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <span class="text-white font-bold text-lg">Room Rent Pro</span>
+                        </div>
+                        <p class="text-sm">AI-powered hospitality management for modern property owners.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Product</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-white transition">Features</a></li>
+                            <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                            <li><a href="#" class="hover:text-white transition">Integrations</a></li>
+                            <li><a href="#" class="hover:text-white transition">API</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Company</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-white transition">About</a></li>
+                            <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                            <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-4">Legal</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="hover:text-white transition">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-slate-800 pt-8 text-center text-sm">
+                    <p>&copy; 2024 Room Rent Pro by IdeaCentricity. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ONBOARDING MODAL -->
+    <div id="onboardingModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto slide-in">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold" id="onboardingTitle">Start Your Free Trial</h3>
+                <button onclick="closeOnboarding()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="onboardingStep1">
+                    <p class="text-slate-600 mb-6">Get full access for 7 days. No credit card required.</p>
+                    <form onsubmit="handleOnboarding(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Property Name</label>
+                            <input type="text" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="e.g., Lahore Guest House">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Your Name</label>
+                            <input type="text" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Full name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Phone Number</label>
+                            <input type="tel" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="03XX-XXXXXXX">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Property Type</label>
+                            <select class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                                <option>Hostel</option>
+                                <option>Guest House</option>
+                                <option>Hotel</option>
+                                <option>Airbnb/Short Rental</option>
+                                <option>Apartment Building</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Number of Rooms</label>
+                            <input type="number" min="1" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="e.g., 15">
+                        </div>
+                        <button type="submit" class="w-full gradient-bg text-white py-3 rounded-xl font-bold hover:shadow-lg transition">
+                            Create Account & Start Trial
+                        </button>
+                    </form>
+                    <p class="text-xs text-slate-500 text-center mt-4">
+                        By signing up, you agree to our Terms of Service and Privacy Policy.
+                    </p>
+                </div>
+                <div id="onboardingStep2" class="hidden text-center py-8">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Welcome Aboard!</h4>
+                    <p class="text-slate-600 mb-6">Your 7-day trial starts now. Redirecting to your dashboard...</p>
+                    <div class="w-full bg-slate-200 rounded-full h-2 mb-2">
+                        <div class="gradient-bg h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTH MODAL -->
+    <div id="authModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full slide-in">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 class="text-xl font-bold" id="authTitle">Sign In</h3>
+                <button onclick="closeAuth()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <form onsubmit="handleAuth(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Phone Number or Email</label>
+                        <input type="text" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="03XX-XXXXXXX or email">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Password</label>
+                        <input type="password" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full gradient-bg text-white py-3 rounded-xl font-bold hover:shadow-lg transition">
+                        Sign In
+                    </button>
+                </form>
+                <p class="text-center mt-4 text-sm text-slate-600">
+                    Don't have an account? 
+                    <button onclick="showOnboarding()" class="text-indigo-600 font-semibold hover:underline">Start free trial</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="hidden min-h-screen bg-slate-50">
+        <!-- Dashboard Nav -->
+        <nav class="bg-white border-b border-slate-200 sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div>
+                            <span class="font-bold text-lg">Room Rent Pro</span>
+                            <span class="hidden sm:inline-flex items-center gap-1 ml-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                Trial: 6 days left
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button onclick="toggleAIAssistant()" class="relative w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center hover:bg-indigo-200 transition">
+                            <i class="fas fa-robot"></i>
+                            <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+                        </button>
+                        <div class="hidden md:flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                                AK
+                            </div>
+                        </div>
+                        <button onclick="logout()" class="text-slate-600 hover:text-red-600 transition">
+                            <i class="fas fa-sign-out-alt text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Trial Banner -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h3 class="text-xl font-bold mb-1">Your trial ends in 6 days</h3>
+                    <p class="text-indigo-100">Upgrade now to keep your data and continue using all features.</p>
+                </div>
+                <button onclick="showPricing()" class="bg-white text-indigo-600 px-6 py-3 rounded-xl font-bold hover:shadow-lg transition">
+                    Upgrade Now
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+12%</span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-800">87%</p>
+                    <p class="text-sm text-slate-500">Occupancy Rate</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+8%</span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-800">Rs. 127K</p>
+                    <p class="text-sm text-slate-500">This Month Revenue</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-600 bg-slate-100 px-2 py-1 rounded-full">Today</span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-800">12</p>
+                    <p class="text-sm text-slate-500">Check-ins</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">4.8/5</span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-800">96%</p>
+                    <p class="text-sm text-slate-500">Guest Satisfaction</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <h3 class="font-bold text-lg mb-4">Quick Actions</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <button onclick="showCheckIn()" class="p-4 rounded-xl bg-green-50 text-green-700 hover:bg-green-100 transition text-center group">
+                                <i class="fas fa-user-plus text-2xl mb-2 group-hover:scale-110 transition block"></i>
+                                <span class="text-sm font-semibold">New Check-in</span>
+                            </button>
+                            <button onclick="showRooms()" class="p-4 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-100 transition text-center group">
+                                <i class="fas fa-door-open text-2xl mb-2 group-hover:scale-110 transition block"></i>
+                                <span class="text-sm font-semibold">Room Status</span>
+                            </button>
+                            <button onclick="showBookings()" class="p-4 rounded-xl bg-purple-50 text-purple-700 hover:bg-purple-100 transition text-center group">
+                                <i class="fas fa-calendar-alt text-2xl mb-2 group-hover:scale-110 transition block"></i>
+                                <span class="text-sm font-semibold">Bookings</span>
+                            </button>
+                            <button onclick="showPayments()" class="p-4 rounded-xl bg-orange-50 text-orange-700 hover:bg-orange-100 transition text-center group">
+                                <i class="fas fa-wallet text-2xl mb-2 group-hover:scale-110 transition block"></i>
+                                <span class="text-sm font-semibold">Payments</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Room Grid -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-lg">Room Status</h3>
+                            <div class="flex gap-2">
+                                <button onclick="filterRooms('all')" class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 text-indigo-700">All</button>
+                                <button onclick="filterRooms('available')" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">Available</button>
+                                <button onclick="filterRooms('occupied')" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">Occupied</button>
+                            </div>
+                        </div>
+                        <div id="roomGrid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                            <!-- Rooms generated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <h3 class="font-bold text-lg mb-4">Recent Activity</h3>
+                        <div class="space-y-4" id="activityList">
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Ahmed Khan checked in</p>
+                                        <p class="text-xs text-slate-500">Room 204 • 2 hours ago</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-green-600">Rs. 15,000</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Sara Rahman arriving</p>
+                                        <p class="text-xs text-slate-500">Room 105 • Expected 4 PM</p>
+                                    </div>
+                                </div>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold">Pending</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                        <i class="fas fa-money-bill"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Payment received</p>
+                                        <p class="text-xs text-slate-500">JazzCash • Room 302</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-blue-600">Rs. 8,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-8">
+                    <!-- AI Assistant Panel -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="gradient-bg p-4 text-white flex justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-robot"></i>
+                                <span class="font-bold">Rixi AI Assistant</span>
+                            </div>
+                            <button onclick="toggleVoiceMode()" id="voiceModeBtn" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        <div id="chatContainer" class="h-80 overflow-y-auto p-4 space-y-3 bg-slate-50">
+                            <div class="flex gap-2">
+                                <div class="w-8 h-8 rounded-full gradient-bg flex-shrink-0 flex items-center justify-center text-white text-xs">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
+                                    <p class="text-sm">Hello! I'm Rixi. I can help you manage bookings, check room availability, process payments, and more. Try asking me anything!</p>
+                                    <p class="text-xs text-slate-400 mt-1">Try: "Show available rooms" or "Kya aaj room available hai?"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t bg-white">
+                            <div class="flex gap-2">
+                                <input type="text" id="chatInput" placeholder="Type your message..." 
+                                    class="flex-1 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    onkeypress="if(event.key==='Enter')sendChatMessage()">
+                                <button onclick="sendChatMessage()" class="w-10 h-10 gradient-bg rounded-full text-white flex items-center justify-center hover:shadow-lg transition">
+                                    <i class="fas fa-paper-plane text-sm"></i>
+                                </button>
+                            </div>
+                            <div class="flex gap-2 mt-2 overflow-x-auto pb-1">
+                                <button onclick="quickAsk('available')" class="px-3 py-1 bg-slate-100 rounded-full text-xs whitespace-nowrap hover:bg-indigo-100 hover:text-indigo-700 transition">Available rooms?</button>
+                                <button onclick="quickAsk('checkin')" class="px-3 py-1 bg-slate-100 rounded-full text-xs whitespace-nowrap hover:bg-indigo-100 hover:text-indigo-700 transition">New check-in</button>
+                                <button onclick="quickAsk('revenue')" class="px-3 py-1 bg-slate-100 rounded-full text-xs whitespace-nowrap hover:bg-indigo-100 hover:text-indigo-700 transition">Today's revenue</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Checkouts -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <h3 class="font-bold text-lg mb-4">Upcoming Checkouts</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 border border-slate-100 rounded-xl">
+                                <div>
+                                    <p class="font-semibold text-sm">Room 201</p>
+                                    <p class="text-xs text-slate-500">Ali Hassan • 11 AM</p>
+                                </div>
+                                <button class="text-indigo-600 text-sm font-semibold hover:underline">Extend</button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-slate-100 rounded-xl">
+                                <div>
+                                    <p class="font-semibold text-sm">Room 105</p>
+                                    <p class="text-xs text-slate-500">Fatima Zahra • 12 PM</p>
+                                </div>
+                                <button class="text-indigo-600 text-sm font-semibold hover:underline">Extend</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI FLOATING BUTTON -->
+    <button onclick="toggleAIAssistant()" id="aiFloatBtn" class="fixed bottom-6 right-6 w-14 h-14 gradient-bg rounded-full text-white shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition z-40 hidden">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <script>
+        // State Management
+        let currentUser = null;
+        let trialDaysLeft = 7;
+        let rooms = [];
+        let isVoiceMode = false;
+        let recognition = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            generateRooms();
+            initSpeechRecognition();
+        });
+
+        // Generate Sample Rooms
+        function generateRooms() {
+            rooms = [];
+            for (let i = 1; i <= 20; i++) {
+                rooms.push({
+                    number: i,
+                    status: Math.random() > 0.3 ? 'occupied' : 'available',
+                    type: i <= 10 ? 'Standard' : 'Deluxe',
+                    price: i <= 10 ? 3000 : 5000
+                });
+            }
+            renderRooms();
+        }
+
+        function renderRooms(filter = 'all') {
+            const grid = document.getElementById('roomGrid');
+            grid.innerHTML = '';
+            
+            rooms.forEach(room => {
+                if (filter !== 'all' && room.status !== filter) return;
+                
+                const isAvailable = room.status === 'available';
+                const div = document.createElement('div');
+                div.className = `p-3 rounded-xl border-2 cursor-pointer transition hover:scale-105 ${
+                    isAvailable ? 'bg-green-50 border-green-200 hover:border-green-400' : 'bg-red-50 border-red-200 hover:border-red-400'
+                }`;
+                div.onclick = () => showRoomDetails(room);
+                div.innerHTML = `
+                    <div class="text-center">
+                        <p class="font-bold text-lg">${room.number}</p>
+                        <p class="text-xs ${isAvailable ? 'text-green-600' : 'text-red-600'} font-semibold uppercase">
+                            ${isAvailable ? 'Available' : 'Occupied'}
+                        </p>
+                        <p class="text-xs text-slate-500 mt-1">Rs. ${room.price}</p>
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function filterRooms(type) {
+            renderRooms(type);
+        }
+
+        // Navigation Functions
+        function showDashboard() {
+            document.getElementById('landing').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('aiFloatBtn').classList.remove('hidden');
+        }
+
+        function showLanding() {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('landing').classList.remove('hidden');
+            document.getElementById('aiFloatBtn').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Onboarding
+        function showOnboarding(plan = 'professional') {
+            document.getElementById('onboardingModal').classList.remove('hidden');
+            document.getElementById('onboardingStep1').classList.remove('hidden');
+            document.getElementById('onboardingStep2').classList.add('hidden');
+        }
+
+        function closeOnboarding() {
+            document.getElementById('onboardingModal').classList.add('hidden');
+        }
+
+        function handleOnboarding(e) {
+            e.preventDefault();
+            document.getElementById('onboardingStep1').classList.add('hidden');
+            document.getElementById('onboardingStep2').classList.remove('hidden');
+            
+            setTimeout(() => {
+                closeOnboarding();
+                showDashboard();
+                addChatMessage('ai', 'Welcome to Room Rent Pro! Your 7-day trial has started. I\'ve set up your property with 20 rooms. How would you like to begin?');
+            }, 2000);
+        }
+
+        // Auth
+        function showAuth(type) {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuth() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            closeAuth();
+            showDashboard();
+        }
+
+        function logout() {
+            showLanding();
+        }
+
+        // AI Chat Functions
+        function sendHeroMessage() {
+            const input = document.getElementById('heroInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const chat = document.getElementById('heroChat');
+            chat.innerHTML += `
+                <div class="flex justify-end">
+                    <div class="bg-indigo-600 text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto">
+                        <p class="text-sm">${text}</p>
+                    </div>
+                </div>
+            `;
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+            
+            setTimeout(() => {
+                const response = getAIResponse(text);
+                chat.innerHTML += `
+                    <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-[80%]">
+                        <p class="text-sm">${response}</p>
+                    </div>
+                `;
+                chat.scrollTop = chat.scrollHeight;
+            }, 800);
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            addChatMessage('user', text);
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getAIResponse(text);
+                addChatMessage('ai', response);
+            }, 1200);
+        }
+
+        function addChatMessage(sender, text) {
+            const container = document.getElementById('chatContainer');
+            const isAI = sender === 'ai';
+            
+            const div = document.createElement('div');
+            div.className = `flex gap-2 ${isAI ? '' : 'flex-row-reverse'}`;
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full ${isAI ? 'gradient-bg' : 'bg-slate-300'} flex-shrink-0 flex items-center justify-center text-white text-xs">
+                    <i class="fas ${isAI ? 'fa-robot' : 'fa-user'}"></i>
+                </div>
+                <div class="${isAI ? 'bg-white' : 'bg-indigo-600 text-white'} p-3 rounded-2xl ${isAI ? 'rounded-tl-none' : 'rounded-tr-none'} shadow-sm max-w-[80%]">
+                    <p class="text-sm">${text}</p>
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const container = document.getElementById('chatContainer');
+            const div = document.createElement('div');
+            div.id = 'typingIndicator';
+            div.className = 'flex gap-2';
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full gradient-bg flex-shrink-0 flex items-center justify-center text-white text-xs">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm">
+                    <div class="flex gap-1">
+                        <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                        <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                        <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        function quickAsk(type) {
+            const questions = {
+                'available': 'How many rooms are available today?',
+                'checkin': 'I need to check in a new guest',
+                'revenue': 'What is today\'s revenue?'
+            };
+            document.getElementById('chatInput').value = questions[type];
+            sendChatMessage();
+        }
+
+        function getAIResponse(input) {
+            const text = input.toLowerCase();
+            
+            // Urdu/Roman Urdu responses
+            if (text.includes('kya') || text.includes('hai') || text.includes('available')) {
+                const available = rooms.filter(r => r.status === 'available').length;
+                return `Ji haan! Aapke paas ${available} rooms available hain. Standard rooms: Rs. 3,000, Deluxe: Rs. 5,000. Kya aap kisi specific room ka check karna chahte hain?`;
+            }
+            
+            if (text.includes('price') || text.includes('rate') || text.includes('kitne')) {
+                return `Hamare rates hain: Standard Room: Rs. 3,000/night, Deluxe Room: Rs. 5,000/night. Weekly stay pe 15% discount aur monthly pe 30% discount available hai.`;
+            }
+            
+            if (text.includes('book') || text.includes('booking') || text.includes('reserve')) {
+                return `Main aapki booking kar sakta hoon. Guest ka naam, CNIC, aur kitne din rehna hai yeh batain. Main Room 101 recommend karunga jo available hai.`;
+            }
+            
+            if (text.includes('checkin') || text.includes('check-in') || text.includes('check in')) {
+                return `Check-in process shuru kar raha hoon. Guest ka naam batain, aur main room assign kar dunga. Kya aapne payment already receive kar li hai?`;
+            }
+            
+            if (text.includes('payment') || text.includes('jazzcash') || text.includes('easypaisa')) {
+                return `Main payments track kar sakta hoon. JazzCash: 0321-4114969, EasyPaisa: same number. Kya aapko payment receipt generate karni hai?`;
+            }
+            
+            if (text.includes('room') && text.includes('status')) {
+                const avail = rooms.filter(r => r.status === 'available').length;
+                const occ = rooms.filter(r => r.status === 'occupied').length;
+                return `Current status: ${avail} rooms available, ${occ} rooms occupied. Occupancy rate: ${Math.round((occ/rooms.length)*100)}%.`;
+            }
+            
+            if (text.includes('revenue') || text.includes('income') || text.includes('earning')) {
+                return `Aaj ki revenue: Rs. 45,000. Is week: Rs. 127,000. Target achieve hone wala hai! Last month se 12% growth hai.`;
+            }
+            
+            if (text.includes('help') || text.includes('assist')) {
+                return `Main aapki madad kar sakta hoon: Room availability check, New bookings, Check-in/Check-out, Payment tracking, Revenue reports, Guest complaints, aur Pricing suggestions. Kya chahiye?`;
+            }
+            
+            return `Main samajh gaya. Aap kehna chahte hain: "${input}". Main rooms, bookings, payments, aur reports manage kar sakta hoon. Kuch specific bataein?`;
+        }
+
+        // Voice Functions
+        function initSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.lang = 'en-US';
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('chatInput').value = transcript;
+                    sendChatMessage();
+                    stopVoiceMode();
+                };
+                
+                recognition.onerror = () => {
+                    stopVoiceMode();
+                    alert('Voice recognition error. Please try again.');
+                };
+                
+                recognition.onend = () => {
+                    stopVoiceMode();
+                };
+            }
+        }
+
+        function toggleVoice() {
+            const btn = document.getElementById('voiceBtn');
+            const ring = document.getElementById('voiceRing');
+            
+            if (ring.classList.contains('hidden')) {
+                ring.classList.remove('hidden');
+                ring.classList.add('pulse-ring');
+                if (recognition) recognition.start();
+            } else {
+                ring.classList.add('hidden');
+                ring.classList.remove('pulse-ring');
+                if (recognition) recognition.stop();
+            }
+        }
+
+        function toggleVoiceMode() {
+            isVoiceMode = !isVoiceMode;
+            const btn = document.getElementById('voiceModeBtn');
+            if (isVoiceMode) {
+                btn.classList.add('bg-red-500');
+                if (recognition) recognition.start();
+                addChatMessage('ai', 'Voice mode activated. Speak now...');
+            } else {
+                btn.classList.remove('bg-red-500');
+                if (recognition) recognition.stop();
+            }
+        }
+
+        function stopVoiceMode() {
+            isVoiceMode = false;
+            const btn = document.getElementById('voiceModeBtn');
+            if (btn) btn.classList.remove('bg-red-500');
+        }
+
+        // Placeholder functions for dashboard actions
+        function showCheckIn() {
+            addChatMessage('ai', 'Opening check-in form... Please provide guest details: Name, CNIC, Contact number, and duration of stay.');
+        }
+
+        function showRooms() {
+            addChatMessage('ai', 'Showing all rooms. Green = Available, Red = Occupied. Click any room to view details or perform actions.');
+        }
+
+        function showBookings() {
+            addChatMessage('ai', 'Calendar view loading... You have 12 upcoming bookings this week. 3 arrivals expected today.');
+        }
+
+        function showPayments() {
+            addChatMessage('ai', 'Payment dashboard: Total pending: Rs. 23,000. Recent: JazzCash Rs. 8,500 (Room 302). Generate reports?');
+        }
+
+        function showRoomDetails(room) {
+            addChatMessage('ai', `Room ${room.number} details: Type: ${room.type}, Rate: Rs. ${room.price}/night, Status: ${room.status}. ${room.status === 'available' ? 'Ready for booking!' : 'Currently occupied by Guest #2045.'}`);
+        }
+
+        function toggleAIAssistant() {
+            document.getElementById('chatContainer').scrollTop = document.getElementById('chatContainer').scrollHeight;
+        }
+
+        function showDemo() {
+            alert('Demo video coming soon! Start your free trial to explore all features now.');
+        }
+
+        function showPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
