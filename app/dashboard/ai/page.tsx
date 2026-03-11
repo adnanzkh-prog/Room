@@ -9,7 +9,7 @@ export default function AIPage() {
   const [messages, setMessages] = useState([
     {
       role: 'ai',
-      content: 'Assalam-o-Alaikum! I am Rambo, your AI property manager. I can help you with:\n\n• Check room availability\n• Create new bookings\n• Process payments (JazzCash/EasyPaisa)\n• Generate reports\n• Answer guest queries\n\nTry asking: "Kya aaj Room 101 available hai?" or "Show me today\'s revenue"'
+      content: 'My name is Rambo, your AI property manager. I can help you with:\n\n• Check room availability\n• Create new bookings\n• Process payments (JazzCash/EasyPaisa)\n• Generate reports\n• Answer guest queries\n\nTry asking: "Kya aaj Room 101 available hai?" or "Show me today\'s revenue"'
     }
   ])
   const [input, setInput] = useState('')
